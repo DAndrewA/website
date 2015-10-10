@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AChat</title>
+		<script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/groupChat.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		</style>
+	</head>
+	<body>
+		<h1>The Chat App</h1>
+
+		<!-- This is the login section that becomes hidden upon logging in -->
+		<div id="login">
+			<h4>Login</h4>
+			<input class="login" id="loginName" type="text" placeholder="Username">
+			<input class="login" id="loginPassword" type="password" placeholder="Password">
+			<br>
+			<input class="login" type="button" value="login" onclick="login()">
+			<a href="signUp.html">Sign up</a>
+		</div>
+
+		<a href="chatApp.html" id="logout">Log out</a>
+
+		<br>
+		<input id="name" type="text" value="" disabled="disabled">
+
+		<!-- This is the div where anything to do with the global messaging happens -->
+		<div id="appGlobal">
+			<br>
+			<textarea id="msgGlobal" placeholder="Message" rows="5"></textarea>
+			<br>
+			<input type="button" value="send" onclick="sendMsgGlobal()">
+
+			<div id="msgReadGlobal"></div>
+		</div>
+
+		<!-- This is the div that will hold all the other group-chat areas. They will be draggable -->
+		<div id="appGroups">
+		</div>
+
+	</body>
+</html>
