@@ -35,16 +35,18 @@ globalFB.on('child_added', function (snapshot) {
 //A function for when the return key is pressed
 //ITS MESSY BUT IT DOES THE JOB. FIX IT LATER
 $(document).keydown(function(e){
-        //If you are logged in, send the current message
+		console.log("return pressed");
+    //If you are logged in, send the current message
 		if(loggedIn){
-                if(e.which == 13){
-		        sendMsgGlobal();
-	        }
-        }
-        //Otherwise, attempt to login
+      if(e.which == 13){
+		  	sendMsgGlobal();
+	    }
+    }
+    //Otherwise, attempt to login
 		else{
-                if(e.which == 13){
-                        login();
-                }
-        }
-});
+      if(e.which == 13)
+			{
+				login();
+    	}
+		}
+}
