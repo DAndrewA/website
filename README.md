@@ -1,2 +1,2 @@
-# website
-The repository for any websites i create
+# Websites
+The repository for any websites I create.
