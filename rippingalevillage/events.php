@@ -125,16 +125,17 @@ function Go(){return}
   $password = "passw0rd";
   $dbname = "a7488538_rEvents";
 
-  $conn = mysqli($host,$username,$password,$dbname);
+  $conn = new mysqli($host,$username,$password,$dbname);
 
   //checking the connection to the database
   if($conn->connect_error){
     exit("Connection to the database failed: " . $conn->connect_error);
   }
+  echo "connection succesful";
 
   // querying for all events from 5 days ago or later
   $dateToCheck = date("Y-m-d",strtotime("-5 days"));
-  $sql = "SELECT * FROM events WHERE days >= " . $dateToCheck;
+  $sql = "SELECT * FROM `events` WHERE `days` >= " . $dateToCheck;
   $result = $conn->query("$sql");
 
   if($result->num_rows > 0){
@@ -163,6 +164,7 @@ function Go(){return}
   }
 
 ?>
+
 
       <!-- END Paste -->
       <a href="http://www.rippingalevillage.co.uk/Events.htm#Top">Back to top</a> </div>
