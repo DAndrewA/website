@@ -117,30 +117,52 @@ function Go(){return}
       <!-- START Paste -->
 
 
+<!-- php code goes here -->
+<?php
+  // establishing a connection to the mysql server
+  $host = "";
+  $username = "visitor";
+  $password = "visitor";
+  $dbname = "rippingaleEvents";
 
-<!-- Table set as template for php code -->
+  $conn = mysqli($host,$username,$password,$dbname);
 
-<table border="0" cellspacing="0" cellpadding="0">
-<tbody><tr height="16">
-<td width="3" align="LEFT"> <br></td><td width="204" align="RIGHT"><b><font style="FONT-SIZE:10pt" face="Arial" color="#000000">Friday 02 October 2015</font></b></td>
-<td width="7" align="LEFT"> <br></td><td width="68" align="CENTER"><font style="FONT-SIZE:10pt" face="Arial" color="#000000">10:00 AM</font></td>
-<td width="10" align="LEFT"> <br></td><td width="298" align="LEFT"><b><font style="FONT-SIZE:10pt" face="Arial" color="#000000">Parish Council - Open Surgery</font></b></td>
-</tr>
-</tbody></table>
-<table border="0" cellspacing="0" cellpadding="0">
-<tbody><tr height="16">
-<td width="294" align="LEFT"> <br></td><td width="298" align="LEFT"><i><font style="FONT-SIZE:10pt" face="Arial" color="#800000">Bull Inn, Rippingale</font></i></td>
-</tr>
-</tbody></table>
-<table border="0" cellspacing="0" cellpadding="0">
-<tbody><tr height="14">
-<td width="294" align="LEFT"> <br></td><td width="298" align="LEFT"><font style="FONT-SIZE:8pt" face="Tahoma" color="#ffffff">.</font></td>
-</tr>
-</tbody></table>
+  //checking the connection to the database
+  if($conn->connect_error){
+    exit("Connection to the database failed: " . $conn->connect_error);
+  }
 
+  // querying for all events from 5 days ago or later
+  $dateToCheck = date("Y-m-d",strtotime("-5 days"));
+  $sql = "SELECT * FROM events WHERE days >= " . $dateToCheck;
+  $result = $conn->query("$sql");
 
+  if($result->num_rows > 0){
+    while($row = $result->fetch_assoc()){
+        // echos the table into the html, with the event's time,date,description and location in the relevant places
+        echo "<table border="0" cellspacing="0" cellpadding="0">
+        <tbody><tr height="16">
+        <td width="3" align="LEFT"> <br></td><td width="204" align="RIGHT"><b><font style="FONT-SIZE:10pt" face="Arial" color="#000000">" . $row["date"] . "</font></b></td>
+        <td width="7" align="LEFT"> <br></td><td width="68" align="CENTER"><font style="FONT-SIZE:10pt" face="Arial" color="#000000">" . $row["time"] . "</font></td>
+        <td width="10" align="LEFT"> <br></td><td width="298" align="LEFT"><b><font style="FONT-SIZE:10pt" face="Arial" color="#000000">" . $row["title"] . "</font></b></td>
+        </tr>
+        </tbody></table>
+        <table border="0" cellspacing="0" cellpadding="0">
+        <tbody><tr height="16">
+        <td width="294" align="LEFT"> <br></td><td width="298" align="LEFT"><i><font style="FONT-SIZE:10pt" face="Arial" color="#800000">" . $row["location"] . "</font></i></td>
+        </tr>
+        </tbody></table>
+        <table border="0" cellspacing="0" cellpadding="0">
+        <tbody><tr height="14">
+        <td width="294" align="LEFT"> <br></td><td width="298" align="LEFT"><font style="FONT-SIZE:8pt" face="Tahoma" color="#ffffff">.</font></td>
+        </tr>
+        </tbody></table>";
+    }
+  }else{
+    echo "<h3>No events were retrieved from the database</h3>";
+  }
 
-
+?>
 
       <!-- END Paste -->
       <a href="http://www.rippingalevillage.co.uk/Events.htm#Top">Back to top</a> </div>
