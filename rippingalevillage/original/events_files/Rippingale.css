@@ -1,0 +1,92 @@
+BODY{color: black;font-family: Arial, Verdana, Tahoma, 'Times New Roman'; font-size:13px;background-color:#ffffff; text-align: center; 
+
+
+	
+	background-image: url(../Images/WildlifeMontageCrop-webMontage-02.jpg);
+	background-repeat: repeat;
+	background-position: center top;
+
+
+
+
+
+
+} 
+
+
+H1{color:#336699; font-family:Verdana, Arial, Tahoma, 'Times New Roman'; font-size:medium;; text-align:center; font-weight: bold; left: 0px; clip:  rect(   )}
+H2{color:#336699; font-size: medium; font-weight: bold: font-family:Arial, Verdana, Tahoma, 'Times New Roman'; font-size:large; text-decoration:none}
+table{font-family:Arial, Verdana, Tahoma, 'Times New Roman';font-size:13px;; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+div.breadcrumb { margin-left: 5px; font-family: Arial, Verdana, "Times New Roman"; font-style: normal; font-weight: normal; color: #336699}
+div.maintext{font-family: Arial, Verdana, "Times New Roman"; font-style: normal;margin-right:2em;font-size:13px;padding:2;}
+.generaltext {font-family: Arial, Verdana, "Times New Roman"; font-size: x-small; font-style: normal; margin-left: 150px; margin-right:150px;}
+div.normal{font-family:Arial, Verdana, "Times New Roman"; font-style: normal;margin-right:2em;font-size:13px; float:none;padding:2;}
+a {  font-family: Arial, Verdana, "Times New Roman";  color: #336699; text-decoration: underline}
+a:link {  font-family: Arial, Verdana, "Times New Roman";  color: #336699; text-decoration: underline}
+a:hover {  font-family: Arial, Verdana, "Times New Roman";  color: #9933FF;text-decoration:none}
+a:active{  font-family: Arial, Verdana, "Times New Roman";  color: #9933FF;text-decoration:none}
+a:visited{font-family: Arial, Verdana, "Times New Roman";  color: #336699; text-decoration: underline}
+.folding {  cursor: hand; font-family: Arial, Verdana, "Times New Roman"; font-weight: normal; color: #336699; text-decoration: underline}
+.look2 {  cursor: hand; font-family: Arial, Verdana, "Times New Roman"; font-weight: normal; color: #9933FF; text-decoration: underline; list-style-type: none; list-style-image: url(../Images/tri.gif)}
+h3 {  font-family: Arial, Verdana, "Times New Roman"; font-size: small; font-weight: bold; color: #336699}
+div.imageright{margin-right:2em;float:right;padding-left:2;padding-right:10}
+div.credits{font-family:Arial, Verdana, "Times New Roman";font-size:xx-small;font-weight:bold;color:#336699}
+div.address{font-family:Arial, Verdana, "Times New Roman";font-size:13px;font-weight:bold;color:#336699}
+div.bold{color: #336699;font-family: Arial, Verdana, Tahoma, 'Times New Roman'; font-size:13px;}
+.highlighted {  font-family: Arial, Verdana, "Times New Roman"; font-size: x-small; color: #336699}
+.nobullet {  list-style-type: none; left: 50px;}
+.nobulletsmall {  font-family: Arial, Verdana, "Times New Roman"; font-size: xx-small; font-weight: bold; list-style-type: none; left: 50px; clip:  rect(   )}
+
+#left{
+position:absolute;
+/*float: left;*/
+left:10px;top:240px;width:200px;}
+
+#middlecolumn{margin-top:0;margin-left:220px;margin-right:190px;}
+#middlecolumnwide{margin-top:0;margin-left:150px;margin-right:150px;}
+
+#right{
+	position:absolute;
+	/*float: right;*/
+	right:10px;
+	top:220px;
+	width:150px;
+	left: auto;
+	height: auto;
+
+}
+#shopright{position:absolute;right:10px;top:220px;width:200px;}
+#shopcenter{margin-top:0;margin-left:100px;margin-right:220px;}
+#textleft{margin-left:50px;}
+#churchright{position:absolute;right:20px;top:220px;width:200px;}
+
+#footer {clear: both; }
+
+#wrapper {
+	position: relative;
+	width:970px; /*this is a good width to use in case your users still use 800x600 resolutions*/
+	/*margin: 0 auto ;*/ /*this is how you center it*/
+	margin-right: auto;
+	margin-left: auto;
+	Border: 1px solid  #4469ba;
+	text-align: left;
+	background-color:#ffffff;
+	
+}
+
+
+
+.BackgroundImage {
+	background-attachment: scroll;
+	background-image: url(../Images/FloraAndFauna03.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: auto;
+	width: auto;
+	}
+	
+
+
+
+
+}
