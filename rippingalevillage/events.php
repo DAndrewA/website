@@ -131,11 +131,10 @@ function Go(){return}
   if($conn->connect_error){
     exit("Connection to the database failed: " . $conn->connect_error);
   }
-  echo "connection succesful";
 
   // querying for all events from 5 days ago or later
   $dateToCheck = date("Y-m-d",strtotime("-5 days"));
-  $sql = "SELECT * FROM `events` WHERE `days` >= " . $dateToCheck;
+  $sql = "SELECT * FROM events ORDER BY date DESC";
   $result = $conn->query("$sql");
 
   if($result->num_rows > 0){
