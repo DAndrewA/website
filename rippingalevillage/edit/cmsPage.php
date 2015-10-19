@@ -26,21 +26,21 @@
 
     // if the user logged in correctly, the cms is displayed to them
     if($result->num_rows > 0){
-      <h1>Upload event</h1>
-      <form action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>' method='post'>
-        echo "<input type='hidden' value='true' name='event'>"
-        echo "AUTHOR: <input type='text' value="$_POST["username"]" name='eventAuthor'>"
-        echo "TITLE: <input type='text' name='eventTitle'>"
-        echo "LOCATION: <input type='text' value="$row["location"]" name='eventLocation'>"
-        echo "DATE: <input type='date' name='eventDate'>"
-        echo "TIME: <input type='time' name='eventTime'>"
-        echo "DESCRIPTION: <textarea rows='10' cols='100' name='eventDescription'></textarea>"
-        echo "<input type='submit'>"
-      </form>
+      echo "<h1>Upload event</h1>";
+      echo "<form action=" . htmlspecialchars($_SERVER["PHP_SELF"]) . " method='post'>";
+      echo "<input type='hidden' value='true' name='event'>";
+      echo "AUTHOR: <input type='text' value=" . $_POST["username"] . " name='eventAuthor'>";
+      echo "TITLE: <input type='text' name='eventTitle'>";
+      echo "LOCATION: <input type='text' value=" . $row["location"] . " name='eventLocation'>";
+      echo "DATE: <input type='date' name='eventDate'>";
+      echo "TIME: <input type='time' name='eventTime'>";
+      echo "DESCRIPTION: <textarea rows='10' cols='100' name='eventDescription'></textarea>";
+      echo "<input type='submit'>";
+      echo "</form>";
     }
     // if there are no returned values from the query, the user is told they have used incorrect login credentials
     else{
-      echo "<p style="color: #FF0000;">The username or password was incorrect</p>";
+      echo "<p style='color: #FF0000;'>The username or password was incorrect</p>";
     }
 
     // adds the event passed into the page to the events database
@@ -60,10 +60,10 @@
       // finishing the query
       $query = $query . ");"
 
-      $result = $conn->query("$query");
+      $result = $conn->query($query);
 
       if($result){
-        echo "<p style='color: #FF0000'>The event was succesfully added to the databse</p>"
+        echo "<p style='color: #FF0000'>The event was succesfully added to the databse</p>";
       }
       else{
         echo "There was an error " . $result->error;
