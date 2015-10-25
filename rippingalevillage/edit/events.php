@@ -133,8 +133,8 @@ function Go(){return}
   }
 
   // querying for all events from 5 days ago or later
-  $dateToCheck = date("Y-m-d",strtotime("-5 days"));
-  $sql = "SELECT * FROM events ORDER BY date DESC";
+  $dateToCheck = date("Y\-m\-d",strtotime("-5 days"));
+  $sql = "SELECT * FROM events WHERE date>'" . $dateToCheck . "' ORDER BY date DESC";
   $result = $conn->query("$sql");
 
   if($result->num_rows > 0){
@@ -142,8 +142,8 @@ function Go(){return}
         // echos the table into the html, with the event's time,date,description and location in the relevant places
         echo "<table border='0' cellspacing='0' cellpadding='0'>";
         echo "<tbody><tr height='16'>";
-        echo "<td width='3' align='LEFT'> <br></td><td width='204' align='RIGHT'><b><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["dateAsText"] . "</font></b></td>";
-        echo "<td width='7' align='LEFT'> <br></td><td width='68' align='CENTER'><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["timeAsText"] . "</font></td>";
+        echo "<td width='3' align='LEFT'> <br></td><td width='204' align='RIGHT'><b><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["date"] . "</font></b></td>";
+        echo "<td width='7' align='LEFT'> <br></td><td width='68' align='CENTER'><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["time"] . "</font></td>";
         echo "<td width='10' align='LEFT'> <br></td><td width='298' align='LEFT'><b><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["title"] . "</font></b></td>";
         echo "</tr>";
         echo "</tbody></table>";

@@ -33,9 +33,9 @@
         echo "<h1>Upload event</h1>";
         echo "<form action=" . htmlspecialchars($_SERVER["PHP_SELF"]) . " method='post'>";
         echo "<input type='hidden' value='true' name='event'>";
-        echo "AUTHOR: <input type='text' value=" . $_row["username"] . " name='eventAuthor'><br>";
+        echo "AUTHOR: <input type='text' value='" . $row["username"] . "' name='eventAuthor'><br>";
         echo "TITLE: <input type='text' name='eventTitle'><br>";
-        echo "LOCATION: <input type='text' value=" . $row["location"] . " name='eventLocation'><br>";
+        echo "LOCATION: <input type='text' value='" . $row["location"] . "' name='eventLocation'><br>";
         echo "DATE: <input type='date' name='eventDate'><br>";
         echo "TIME: <input type='time' name='eventTime'><br>";
         echo "DESCRIPTION: <textarea rows='10' cols='100' name='eventDescription'></textarea><br>";
