@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <h1>Please log in to the cms</h1>
-    Username: <input type="text" name="username">
-    Password: <input type="password" name="password">
-    <input type="submit" value="Log In">
+  <form action="cmsPage.php" method='post'>
+    <h1>Please log in to the cms</h1><br>
+    Username: <input type="text" name="usrnm"><br>
+    Password: <input type="password" name="pswrd"><br>
+    <input type="submit" value="Log In"><br>
   </form>
   <?php
     // establishing a connection to the mysql server
@@ -22,8 +22,9 @@
     }
 
     // querying the database for any users that match the username and password
-    //$sql = "SELECT * FROM users WHERE username=" . $_POST["username"] . " AND password=" . $_POST["password"] . ";";
-    $sql = "SELECT * FROM users WHERE userId=1;";
+    $sql = "SELECT * FROM users WHERE username='" . $_POST["usrnm"] . "' AND password='" . $_POST["pswrd"] . "';";
+    echo $_POST["usrnm"];
+    echo $sql;
     $result = $conn->query("$sql");
 
     // if the user logged in correctly, the cms is displayed to them
@@ -77,4 +78,4 @@
 
   ?>
 </body>
-</html>	
+</html>
