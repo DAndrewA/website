@@ -10,9 +10,9 @@
   <?php
     // establishing a connection to the mysql server
     $host = "mysql1.000webhost.com";
-    $username = "a7488538_visitor";
-    $password = "passw0rd";
-    $dbname = "a7488538_rEvents";
+    $username = "a7488538_user";
+    $password = "Passw0rd";
+    $dbname = "a7488538_eventDB";
 
     $conn = new mysqli($host,$username,$password,$dbname);
 
@@ -23,8 +23,6 @@
 
     // querying the database for any users that match the username and password
     $sql = "SELECT * FROM users WHERE username='" . $_POST["usrnm"] . "' AND password='" . $_POST["pswrd"] . "';";
-    echo $_POST["usrnm"];
-    echo $sql;
     $result = $conn->query("$sql");
 
     // if the user logged in correctly, the cms is displayed to them

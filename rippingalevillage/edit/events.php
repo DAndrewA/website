@@ -121,9 +121,9 @@ function Go(){return}
 <?php
   // establishing a connection to the mysql server
   $host = "mysql1.000webhost.com";
-  $username = "a7488538_visitor";
-  $password = "passw0rd";
-  $dbname = "a7488538_rEvents";
+  $username = "a7488538_user";
+  $password = "Passw0rd";
+  $dbname = "a7488538_eventDB";
 
   $conn = new mysqli($host,$username,$password,$dbname);
 
