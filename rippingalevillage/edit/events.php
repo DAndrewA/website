@@ -157,6 +157,20 @@ function Go(){return}
         echo "<td width='294' align='LEFT'> <br></td><td width='298' align='LEFT'><font style='FONT-SIZE:8pt' face='Tahoma' color='#ffffff'>.</font></td>";
         echo "</tr>";
         echo "</tbody></table>";
+
+        echo "</br></br>";
+        echo "<table>";
+        echo "<tr>";
+        echo "<td>" . $row["date"] . "</td>";
+        echo "<td>" . $row["time"] . "</td>";
+        echo "<td colspan='2'>" . $row["title"] . "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td colspan='2'>" . $row["location"] . "</td>";
+        echo "<td rowspan='3'>" . $row["description"] . "</td>";
+        echo "</tr>";
+        echo "<tr></tr><tr></tr>";
+        echo "</table>";
     }
   }else{
     echo "<h3>No events were retrieved from the database</h3>";
