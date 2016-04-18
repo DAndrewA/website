@@ -133,43 +133,25 @@ function Go(){return}
   }
 
   // querying for all events from 5 days ago or later
-  $dateToCheck = date("Y\-m\-d",strtotime("-5 days"));
+  $dateToCheck = date("Y\-m\-d",strtotime("-15 days"));
   $sql = "SELECT * FROM events WHERE date>'" . $dateToCheck . "' ORDER BY date DESC";
   $result = $conn->query("$sql");
 
   if($result->num_rows > 0){
     while($row = $result->fetch_assoc()){
-        // echos the table into the html, with the event's time,date,description and location in the relevant places
-        echo "<table border='0' cellspacing='0' cellpadding='0'>";
-        echo "<tbody><tr height='16'>";
-        echo "<td width='3' align='LEFT'> <br></td><td width='204' align='RIGHT'><b><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["date"] . "</font></b></td>";
-        echo "<td width='7' align='LEFT'> <br></td><td width='68' align='CENTER'><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["time"] . "</font></td>";
-        echo "<td width='10' align='LEFT'> <br></td><td width='298' align='LEFT'><b><font style='FONT-SIZE:10pt' face='Arial' color='#000000'>" . $row["title"] . "</font></b></td>";
-        echo "</tr>";
-        echo "</tbody></table>";
-        echo "<table border='0' cellspacing='0' cellpadding='0'>";
-        echo "<tbody><tr height='16'>";
-        echo "<td width='294' align='LEFT'> <br></td><td width='298' align='LEFT'><i><font style='FONT-SIZE:10pt' face='Arial' color='#800000'>" . $row["location"] . "</font></i></td>";
-        echo "</tr>";
-        echo "</tbody></table>";
-        echo "<table border='0' cellspacing='0' cellpadding='0'>";
-        echo "<tbody><tr height='14'>";
-        echo "<td width='294' align='LEFT'> <br></td><td width='298' align='LEFT'><font style='FONT-SIZE:8pt' face='Tahoma' color='#ffffff'>.</font></td>";
-        echo "</tr>";
-        echo "</tbody></table>";
-
         echo "</br></br>";
-        echo "<table>";
+        echo "<table style='FONT-SIZE:10pt;font-family:Ariel;'>";
         echo "<tr>";
-        echo "<td>" . $row["date"] . "</td>";
-        echo "<td>" . $row["time"] . "</td>";
-        echo "<td colspan='2'>" . $row["title"] . "</td>";
+        echo "<td style='width:100px'><b>" . $row["date"] . "  </b></td>";
+        echo "<td style='width:80px'>" . $row["time"] . "  </td>";
+        echo "<td style='width:350px'><b> " . $row["title"] . "</b></td>";
+        echo "</tr><tr>";
+        echo "<td colspan='2'></td>";
+        echo "<td style='color:#800000;'><i>" . $row["location"] . "</i></td>";
+        echo "</tr><tr>";
+        echo "<td colspan='2'></td>";
+        echo "<td style='width:350px'>" . $row["description"] . "</td>";
         echo "</tr>";
-        echo "<tr>";
-        echo "<td colspan='2'>" . $row["location"] . "</td>";
-        echo "<td rowspan='3'>" . $row["description"] . "</td>";
-        echo "</tr>";
-        echo "<tr></tr><tr></tr>";
         echo "</table>";
     }
   }else{
