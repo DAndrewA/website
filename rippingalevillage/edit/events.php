@@ -114,7 +114,18 @@ function Go(){return}
       <script type="text/Javascript" src="./events_files/Date.js"></script><font color="#336699"><font size="1"><b>Last updated:&nbsp;&nbsp;2/10/2015</b></font></font>
       <br>
       <p>&nbsp;</p>
-      <!-- START Paste -->
+
+      <!-- START OF EVENTS CODE GOES HERE -->
+      <form action="events.php" method='get'>
+        <h1>How would you like to filter the search</h1><br>
+        Location: <select name="locationFilter">
+                    <option value=""> -- </option>
+                    <option value="Village Hall, Rippingale">Village Hall, Rippingale</option>
+                    <option value="Rippingale Village">Rippingale Village</option>
+                    <option value="Visit">Visit</option>
+                  </select><br>
+        <input type="submit" value="Filter search"><br>
+      </form>
 
 
 <!-- php code goes here -->
@@ -134,8 +145,14 @@ function Go(){return}
 
   // querying for all events from 5 days ago or later
   $dateToCheck = date("Y\-m\-d",strtotime("-15 days"));
-  $sql = "SELECT * FROM events WHERE date>'" . $dateToCheck . "' ORDER BY date DESC";
-  $result = $conn->query("$sql");
+  $sql = "SELECT * FROM events WHERE date>'" . $dateToCheck . "'";
+
+  // can filter the search based on values in the GET method
+  if(isset($_GET["locationFilter"]) and $_GET["locationFilter"] != ""){
+    $sql = $sql . " AND location=" . $_GET["locationFilter"];
+  }
+
+  $result = $conn->query("$sql" . " ORDER BY date DESC");
 
   if($result->num_rows > 0){
     while($row = $result->fetch_assoc()){
