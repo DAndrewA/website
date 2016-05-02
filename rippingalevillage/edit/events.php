@@ -139,11 +139,16 @@ function Go(){return}
 
   if($result->num_rows > 0){
     while($row = $result->fetch_assoc()){
+        // changes the result data to a better string format
+        $dateAsReadString = date("l d F Y",strtotime($row["date"]));
+        $timeAsReadString = date("h:i A",strtotime($row["time"]));
+
+        // prints the event information to the webpage as a table
         echo "</br></br>";
         echo "<table style='FONT-SIZE:10pt;font-family:Ariel;'>";
         echo "<tr>";
-        echo "<td style='width:100px'><b>" . $row["date"] . "  </b></td>";
-        echo "<td style='width:80px'>" . $row["time"] . "  </td>";
+        echo "<td style='width:100px'><b>" . $dateAsReadString . "  </b></td>";
+        echo "<td style='width:80px'>" . $timeAsReadString . "  </td>";
         echo "<td style='width:350px'><b> " . $row["title"] . "</b></td>";
         echo "</tr><tr>";
         echo "<td colspan='2'></td>";
