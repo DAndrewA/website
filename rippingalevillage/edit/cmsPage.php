@@ -55,7 +55,7 @@
         $sql = $sql . ",description";
       }
       // creating the query with all not null values
-      $sql = $sql . ") VALUES('AMart','" . $_POST["eventTitle"] . "','" . $_POST["eventLocation"] . "','" . $_POST["eventDate"] . "','" . $_POST["eventTime"] . "'";
+      $sql = $sql . ") VALUES('" . $_POST["eventAuthor"] . "','" . $_POST["eventTitle"] . "','" . $_POST["eventLocation"] . "','" . $_POST["eventDate"] . "','" . $_POST["eventTime"] . "'";
       // adding description if it isn't null
       if($_POST["eventDescription"] != ""){
         $sql = $sql . ",'" . $_POST["eventDescription"] . "'";
@@ -71,7 +71,6 @@
       else{
         echo "There was an error " . $result->error;
       }
-      echo $sql;
     }
 
   ?>
