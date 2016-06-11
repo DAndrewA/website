@@ -116,28 +116,10 @@ function Go(){return}
       <p>&nbsp;</p>
 
       <!-- START OF EVENTS CODE GOES HERE -->
-      <form action="events.php" method='get'>
-        <h1>How would you like to filter the search</h1><br>
-        Location: <select name="location">
-                    <option value=""> -- </option>
-                    <option value="Village Hall, Rippingale">Village Hall, Rippingale</option>
-                    <option value="Rippingale Village">Rippingale Village</option>
-                    <option value="Visit">Visit</option>
-                  </select><br>
-
-        Group: <select name="author">
-                <option value=""> -- </option>
-                <option value="Womens Institute"> Women's Institute </option>
-                <option value="Gardening Club"> Gardening Club </option>
-                <option value="AMart"> AMart </option>
-              </select><br>
-
-        <input type="submit" value="Filter search"><br>
-      </form>
-
-
 <!-- php code goes here -->
 <?php
+  //// DATABASE CONNECTION ////
+
   // establishing a connection to the mysql server
   $host = "mysql1.000webhost.com";
   $username = "a7488538_user";
@@ -151,8 +133,34 @@ function Go(){return}
     exit("Connection to the database failed: " . $conn->connect_error);
   }
 
-  // querying for all events from x days ago or later
   $dateToCheck = date("Y\-m\-d",strtotime("-15 days"));
+
+  //// EVENT FILTERING ////
+
+  $filterFields = array("author","location");
+
+  echo "<form action='events.php' method='get'>";
+  echo "<h1>How would you like to filter the search</h1><br>";
+  // starts printing each new filter selection
+  foreach($filterFields as $filterName){
+    echo $filterName . ": <select name='" . $filterName . "'>";
+    echo "<option value=''> -- </option>";
+
+    // gets the separate values to be selected
+    $sql = "SELECT DISTINCT " . $filterName . " FROM events WHERE date>'" . $dateToCheck . "' ORDER BY " . $filterName . " ASC";
+    $result = $conn->query("$sql");
+    while($option = $result->fetch_assoc()){
+      echo "<option value='" . $option[$filterName] . "'>" . $option[$filterName] . "</option>";
+    }
+  echo "</select><br>";
+  }
+
+  echo "<input type='submit' value='Filter search'><br>";
+  echo "</form>";
+
+  //// EVENTS LISTING ////
+
+  // querying for all events from x days ago or later using dateToCheck var
   $sql = "SELECT * FROM events WHERE date>'" . $dateToCheck . "'";
 
   /*
@@ -195,7 +203,7 @@ function Go(){return}
         echo "</table>";
     }
   }else{
-    echo "<h3>No events were retrieved from the database</h3>";
+    echo "<h3>No events matched the description that you've searched for</h3>";
   }
 
 ?>
