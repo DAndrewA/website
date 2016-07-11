@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <form action="cmsPage.php" method='post'>
-    <h1>Please log in to the cms</h1><br>
-    Username: <input type="text" name="usrnm"><br>
-    Password: <input type="password" name="pswrd"><br>
-    <input type="submit" value="Log In"><br>
-  </form>
   <?php
     // establishing a connection to the mysql server
     $host = "mysql1.000webhost.com";
@@ -25,21 +19,42 @@
     $sql = "SELECT * FROM users WHERE username='" . $_POST["usrnm"] . "' AND password='" . $_POST["pswrd"] . "';";
     $result = $conn->query("$sql");
 
+    if($result->num_rows > 0 or $_POST["logIn"] == true){
+      $logIn = true;
+    }
+
+    // LOGGING IN TO THE CMS
+    echo "<form action=" . htmlspecialchars($_SERVER["PHP_SELF"]) . " method='post'>";
+
+    echo "<div";
+    if($logIn == true){
+      echo "style='hidden:true;'";
+    }
+    echo ">";
+
+    echo "<h1>Please log in to the cms</h1><br>";
+    echo "Username: <input type='text' name='usrnm' value='". $_POST["usrnm"] ."'><br>";
+    echo "Password: <input type='password' name='pswrd' value='". $_POST["pswrd"] ."'><br>";
+    echo "<input type='submit' value='Log In'><br>";
+    echo "</div>";
+
+    // link to log out of the cms
+    echo "<a href='cmsPage.php'>Log out</a>";
+
+    // MAKING THE EVENTS
     // if the user logged in correctly, the cms is displayed to them
-    if($result->num_rows > 0){
-      while($row = $result->fetch_assoc()){
-        echo "<h1>Upload event</h1>";
-        echo "<form action=" . htmlspecialchars($_SERVER["PHP_SELF"]) . " method='post'>";
-        echo "<input type='hidden' value='true' name='event'>";
-        echo "AUTHOR: <input type='text' value='" . $row["username"] . "' name='eventAuthor'><br>";
-        echo "TITLE: <input type='text' name='eventTitle'><br>";
-        echo "LOCATION: <input type='text' value='" . $row["location"] . "' name='eventLocation'><br>";
-        echo "DATE: <input type='date' name='eventDate'><br>";
-        echo "TIME: <input type='time' name='eventTime'><br>";
-        echo "DESCRIPTION: <textarea rows='10' cols='100' name='eventDescription'></textarea><br>";
-        echo "<input type='submit'>";
-        echo "</form>";
-      }
+    if($logIn == true){
+      echo "<h1>Upload event</h1>";
+      echo "<input type='hidden' value='true' name='event'>";
+      echo "<input type='hidden' value='true' name='logIn'>";
+      echo "AUTHOR: <input type='text' name='eventAuthor'><br>";
+      echo "TITLE: <input type='text' name='eventTitle'><br>";
+      echo "LOCATION: <input type='text' name='eventLocation'><br>";
+      echo "DATE: <input type='date' name='eventDate'><br>";
+      echo "TIME: <input type='time' name='eventTime'><br>";
+      echo "DESCRIPTION: <textarea rows='10' cols='100' name='eventDescription'></textarea><br>";
+      echo "<input type='submit'>";
+      echo "</form>";
     }
     // if there are no returned values from the query, the user is told they have used incorrect login credentials
     else{
