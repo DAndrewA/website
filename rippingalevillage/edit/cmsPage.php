@@ -28,7 +28,7 @@
 
     echo "<div";
     if($logIn == true){
-      echo "style='hidden:true;'";
+      echo "style='display:none;'";
     }
     echo ">";
 
