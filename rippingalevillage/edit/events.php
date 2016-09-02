@@ -20,7 +20,7 @@
  <!-- InstanceBeginEditable name="Style" -->
 
 
-<link rel="stylesheet" href="./events_files/Rippingale.css" type="text/css">
+<link rel="stylesheet" href="www.rippingalevillage.co.uk/Styles/Rippingale.css" type="text/css">
 
 
   <!-- InstanceEndEditable -->
